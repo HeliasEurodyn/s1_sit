@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using Softone;
 
 namespace ClassLibrary8
@@ -23,6 +24,20 @@ namespace ClassLibrary8
             XModule.InsertControl(addQtyCanc, "*PAGE(Page3,Αυτόματη Εισαγωγή Παραστατικών)");
 
         }
+
+        public override object ExecCommand(int Cmd)
+        {
+            switch (Cmd)
+            {
+                case 150002:
+
+                    MessageBox.Show("150002", "Cell Value");
+                    break;
+            }
+            return base.ExecCommand(Cmd);
+        }
+
+
 
     }
 }

@@ -93,3 +93,12 @@ C:\Users\Chris\Desktop\programming\hlias projects\s1\ACCESS\ClassLibraryAccessCa
 C:\Users\Chris\Desktop\programming\hlias projects\s1\ACCESS\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\ClassLibrary8.csproj.CopyComplete
 C:\Users\Chris\Desktop\programming\hlias projects\s1\ACCESS\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\CalcelQty.dll
 C:\Users\Chris\Desktop\programming\hlias projects\s1\ACCESS\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\CalcelQty.pdb
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\ClassLibrary8.csproj.AssemblyReference.cache
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\ClassLibrary8.AddQtyCanc.resources
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\ClassLibrary8.Properties.Resources.resources
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\ClassLibrary8.csproj.GenerateResource.cache
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\CalcelQty.dll.licenses
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\ClassLibrary8.csproj.CoreCompileInputs.cache
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\CalcelQty.dll
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\CalcelQty.pdb
+C:\Users\helias\source\repos\RPA23041301CP\ClassLibraryAccessCancelQuantity\ClassLibrary8\obj\Debug\ClassLibrary8.csproj.CopyComplete

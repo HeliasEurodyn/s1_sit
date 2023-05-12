@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\Users\Chris\Desktop\Soft1\xplorer.exe</StartProgram>
-    <StartArguments>/xco:"C:\Soft1\230407.XCO" /host:192.168.2.5</StartArguments>
+    <StartProgram>C:\Users\helias\Documents\Soft1\xplorer.exe</StartProgram>
+    <StartArguments>/xco:"C:\Users\helias\Documents\Soft1\230407.XCO" /host:192.168.2.5</StartArguments>
   </PropertyGroup>
 </Project>

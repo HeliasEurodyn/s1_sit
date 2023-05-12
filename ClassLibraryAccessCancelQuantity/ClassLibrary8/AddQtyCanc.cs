@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -37,25 +38,16 @@ namespace ClassLibrary8
 
         void readFilesFromFolder()
         {
-            string folderPath = @"C:\Soft1\RPA"; // replace with the folder path you want to read
+            //string folderPath = @"C:\Soft1\RPA"; // replace with the folder path you want to read
+            //files = Directory.GetFiles(folderPath);
+            //foreach (string file in files)
+            //{
+            //    contentDataGridView.Rows.Add(new string[] { Path.GetFileName(file) });
+            //}
+            filesDataGridView.Rows.Add(new string[] { "file1", "file1 path", });
+            filesDataGridView.Rows.Add(new string[] { "file2", "file2 path", });
 
-            files = Directory.GetFiles(folderPath);
-
-            Dictionary<int, String> dictionary = new Dictionary<int, String>();  //cz
-
-
-            int index = 0;
-            foreach (string file in files)
-            {
-                dictionary.Add(index, Path.GetFileName(file));
-                // Console.WriteLine(Path.GetFileName(file));
-                index++;
-            }
-            this.comboBox3.DataSource = new BindingSource(dictionary, null);
-            this.comboBox3.DisplayMember = "Value";
-            this.comboBox3.ValueMember = "Key";
-
-
+            filesDataGridView.Rows[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#0000FF");
         }
 
         public void loadAutocompleteMtrls()
@@ -703,40 +695,13 @@ namespace ClassLibrary8
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            String sql =
-                   @"SELECT 
-                    A.TRDR,
-                    A.VAT
-                    FROM TRDR A 
-                    WHERE A.COMPANY= "  + xs_.ConnectionInfo.CompanyId.ToString() + 
-                    @" AND A.SODTYPE=13
-                    AND A.ISACTIVE=1 
-                    AND A.VAT = ''
-                    ORDER BY A.CODE,A.TRDR";
-
-            XTable DATASql = xs_.GetSQLDataSet(sql);
-
-            for (int i = 0; i < DATASql.Count; i++)
-            {
-                Console.WriteLine(DATASql[i, "VAT"].ToString());
-            }
+ 
 
         }
 
-        private void ExcelButton_Click(object sender, EventArgs e)
+        private void importExcel(String file)
         {
-
-            String file = "";
-            if (this.comboBox3.SelectedItem != null)
-            {
-                int index = ((KeyValuePair<int, String>)this.comboBox3.SelectedItem).Key;
-                file = this.files[index];
-            }
-            else {
-                return;
-            }
-
-            this.dataGridView1.Rows.Clear();
+            this.contentDataGridView.Rows.Clear();
 
             Microsoft.Office.Interop.Excel.Application xlApp;
             Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
@@ -761,11 +726,11 @@ namespace ClassLibrary8
             {
                 try
                 {
-                   
-     
+
+
                     List<String> rowList = new List<string>();
 
-                    String field1 = (xlWorkSheet.Cells[rCnt, 1].Value == null? "" : xlWorkSheet.Cells[rCnt, 1].Value.ToString());
+                    String field1 = (xlWorkSheet.Cells[rCnt, 1].Value == null ? "" : xlWorkSheet.Cells[rCnt, 1].Value.ToString());
                     String field2 = (xlWorkSheet.Cells[rCnt, 2].Value == null ? "" : xlWorkSheet.Cells[rCnt, 2].Value.ToString());
                     String field3 = (xlWorkSheet.Cells[rCnt, 3].Value == null ? "" : xlWorkSheet.Cells[rCnt, 3].Value.ToString());
                     String field4 = (xlWorkSheet.Cells[rCnt, 4].Value == null ? "" : xlWorkSheet.Cells[rCnt, 4].Value.ToString());
@@ -777,9 +742,9 @@ namespace ClassLibrary8
                     String field10 = (xlWorkSheet.Cells[rCnt, 10].Value == null ? "" : xlWorkSheet.Cells[rCnt, 10].Value.ToString());
                     String field11 = (xlWorkSheet.Cells[rCnt, 11].Value == null ? "" : xlWorkSheet.Cells[rCnt, 11].Value.ToString());
                     String field12 = (xlWorkSheet.Cells[rCnt, 12].Value == null ? "" : xlWorkSheet.Cells[rCnt, 12].Value.ToString());
-                 
+
                     rowList.Add(field1);
-                    rowList.Add(field2); 
+                    rowList.Add(field2);
                     rowList.Add(field3);
                     rowList.Add(field4);
                     rowList.Add(field5);
@@ -788,14 +753,14 @@ namespace ClassLibrary8
                     rowList.Add(field8);
                     rowList.Add(field9);
                     rowList.Add(field10);
-                 
+
                     rowList.Add(field11);
                     rowList.Add(field12);
 
                     string[] row = rowList.ToArray();
-                    
-                     dataGridView1.Rows.Add(row);
-                } 
+
+                    contentDataGridView.Rows.Add(row);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -811,48 +776,105 @@ namespace ClassLibrary8
             Marshal.ReleaseComObject(xlApp);
 
 
-            // Stream myStream = null;
-            /* OpenFileDialog openFileDialog1 = new OpenFileDialog();
+        }
 
-             openFileDialog1.InitialDirectory = "c:\\";
-             openFileDialog1.Filter = "(*.xls,*.xlsx)|*.xls;*.xlsx";
-             openFileDialog1.FilterIndex = 2;
-             openFileDialog1.RestoreDirectory = true;
-             DialogResult result = openFileDialog1.ShowDialog();
-             String file = "";
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-             if (result == DialogResult.OK)
-             {
-                 file = openFileDialog1.FileName;
-                 // this.XlsPathTextBox.Text = file;
-             }
-             else
-             {
-                 return;
-             }
+        }
 
-             try
-             {
+        private void button2_Click(object sender, EventArgs e)
+        {
 
-                 DataSet ds = new DataSet();
-                 string constring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + file + ";Extended Properties=\"Excel 8.0;HDR=YES;IMEX=1;\"";
-                 OleDbConnection con = new OleDbConnection(constring + "");
+        }
 
-                 con.Open();
-                 DataTable dt1 = con.GetSchema("Tables");
-                 string firstSheet = dt1.Rows[0]["TABLE_NAME"].ToString();
-                 string sqlquery = "Select * From [" + dt1.Rows[0]["TABLE_NAME"].ToString() + "]";
+        private void filesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-                 OleDbDataAdapter da = new OleDbDataAdapter(sqlquery, con);
-                 da.Fill(ds);
-                 DataTable dt = ds.Tables[0];
-                 this.ResultsDataGridView.DataSource = dt;
-                 con.Close();
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show("Πρόβλημα ανάγνωσης αρχείου.");
-             } */
+        }
+
+        private void filesDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void filesDataGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+          
+
+        }
+
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            String sql =
+        @"SELECT 
+                    A.TRDR,
+                    A.VAT
+                    FROM TRDR A 
+                    WHERE A.COMPANY= " + xs_.ConnectionInfo.CompanyId.ToString() +
+         @" AND A.SODTYPE=13
+                    AND A.ISACTIVE=1 
+                    AND A.VAT = ''
+                    ORDER BY A.CODE,A.TRDR";
+
+            XTable DATASql = xs_.GetSQLDataSet(sql);
+
+            for (int i = 0; i < DATASql.Count; i++)
+            {
+                Console.WriteLine(DATASql[i, "VAT"].ToString());
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+           // this.importExcel();
+        }
+
+        private void filesDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var cellValue = filesDataGridView.Rows[e.RowIndex].Cells[1].Value;
+
+            // Create a new popup form and set its text to the cell value
+            MessageBox.Show(cellValue.ToString(), "Cell Value");
+
+            this.importExcel((string)cellValue);
+        }
+
+        private void toolStripButton3_Click_1(object sender, EventArgs e)
+        {
+            if (this.filesDataGridView.Visible == true)
+            {
+                this.filesDataGridView.Visible = false;
+                this.separationPanel.Visible = false;
+            }
+            else
+            {
+                this.filesDataGridView.Visible = true;
+                this.separationPanel.Visible = true;
+            }
+        }
+
+        private void filesDataGridView_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && filesDataGridView.SelectedCells.Count > 0)
+            {
+                // Get the cell value of the selected cell
+                var cellValue = filesDataGridView.SelectedCells[0].Value;
+
+                // Show a message box with the cell value
+                MessageBox.Show(cellValue.ToString(), "Cell Value");
+            }
+        }
+
+        private void toolStripButton11_Click_1(object sender, EventArgs e)
+        {
+            string filePath = @"C:\temp\MyMessage.eml";
+            Process.Start(filePath);
         }
     }
 }
