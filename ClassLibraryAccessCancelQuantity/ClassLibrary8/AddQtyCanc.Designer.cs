@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddQtyCanc));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.separationPanel = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -39,6 +39,8 @@
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.filesDataGridView = new System.Windows.Forms.DataGridView();
+            this.c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.path = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.contentDataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,14 +49,15 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.path = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contentDataGridView)).BeginInit();
@@ -158,6 +161,21 @@
             this.filesDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.filesDataGridView_CellDoubleClick);
             this.filesDataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filesDataGridView_KeyDown_1);
             // 
+            // c1
+            // 
+            this.c1.HeaderText = "Imports";
+            this.c1.MinimumWidth = 20;
+            this.c1.Name = "c1";
+            this.c1.ReadOnly = true;
+            this.c1.Width = 200;
+            // 
+            // path
+            // 
+            this.path.HeaderText = "Column13";
+            this.path.Name = "path";
+            this.path.ReadOnly = true;
+            this.path.Visible = false;
+            // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -178,6 +196,9 @@
             this.Column4,
             this.Column5,
             this.Column6,
+            this.Column13,
+            this.Column14,
+            this.Column15,
             this.Column7,
             this.Column8,
             this.Column9,
@@ -192,8 +213,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "ΑΦΜ";
             this.Column1.Name = "Column1";
             // 
@@ -221,6 +242,21 @@
             // 
             this.Column6.HeaderText = "Πληρωμή";
             this.Column6.Name = "Column6";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Κωδικός Είδους";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Περιγραφή Είδους";
+            this.Column14.Name = "Column14";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "ΜΜ";
+            this.Column15.Name = "Column15";
             // 
             // Column7
             // 
@@ -251,21 +287,6 @@
             // 
             this.Column12.HeaderText = "Αρ Μετ Μέσου";
             this.Column12.Name = "Column12";
-            // 
-            // c1
-            // 
-            this.c1.HeaderText = "Imports";
-            this.c1.MinimumWidth = 20;
-            this.c1.Name = "c1";
-            this.c1.ReadOnly = true;
-            this.c1.Width = 200;
-            // 
-            // path
-            // 
-            this.path.HeaderText = "Column13";
-            this.path.Name = "path";
-            this.path.ReadOnly = true;
-            this.path.Visible = false;
             // 
             // AddQtyCanc
             // 
@@ -309,6 +330,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;

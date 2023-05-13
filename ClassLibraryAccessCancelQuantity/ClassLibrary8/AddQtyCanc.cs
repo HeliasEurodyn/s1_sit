@@ -38,16 +38,18 @@ namespace ClassLibrary8
 
         void readFilesFromFolder()
         {
-            //string folderPath = @"C:\Soft1\RPA"; // replace with the folder path you want to read
-            //files = Directory.GetFiles(folderPath);
-            //foreach (string file in files)
-            //{
-            //    contentDataGridView.Rows.Add(new string[] { Path.GetFileName(file) });
-            //}
-            filesDataGridView.Rows.Add(new string[] { "file1", "file1 path", });
-            filesDataGridView.Rows.Add(new string[] { "file2", "file2 path", });
 
-            filesDataGridView.Rows[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#0000FF");
+            string folderPath = @"C:\Soft1\RPA"; // replace with the folder path you want to read
+            files = Directory.GetFiles(folderPath);
+            foreach (string file in files)
+            {
+                filesDataGridView.Rows.Add(new string[] { Path.GetFileName(file), file });
+            }
+
+            //filesDataGridView.Rows.Add(new string[] { "file1", "file1 path", });
+            //filesDataGridView.Rows.Add(new string[] { "file2", "file2 path", });
+
+            //filesDataGridView.Rows[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#0000FF");
         }
 
         public void loadAutocompleteMtrls()
@@ -713,6 +715,7 @@ namespace ClassLibrary8
             int rw = 0;
             int cl = 0;
 
+            try {
             xlApp = new Microsoft.Office.Interop.Excel.Application();
             xlWorkBook = xlApp.Workbooks.Open(file, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
@@ -726,8 +729,6 @@ namespace ClassLibrary8
             {
                 try
                 {
-
-
                     List<String> rowList = new List<string>();
 
                     String field1 = (xlWorkSheet.Cells[rCnt, 1].Value == null ? "" : xlWorkSheet.Cells[rCnt, 1].Value.ToString());
@@ -742,6 +743,9 @@ namespace ClassLibrary8
                     String field10 = (xlWorkSheet.Cells[rCnt, 10].Value == null ? "" : xlWorkSheet.Cells[rCnt, 10].Value.ToString());
                     String field11 = (xlWorkSheet.Cells[rCnt, 11].Value == null ? "" : xlWorkSheet.Cells[rCnt, 11].Value.ToString());
                     String field12 = (xlWorkSheet.Cells[rCnt, 12].Value == null ? "" : xlWorkSheet.Cells[rCnt, 12].Value.ToString());
+                    String field13 = (xlWorkSheet.Cells[rCnt, 13].Value == null ? "" : xlWorkSheet.Cells[rCnt, 13].Value.ToString());
+                    String field14 = (xlWorkSheet.Cells[rCnt, 14].Value == null ? "" : xlWorkSheet.Cells[rCnt, 14].Value.ToString());
+                    String field15 = (xlWorkSheet.Cells[rCnt, 15].Value == null ? "" : xlWorkSheet.Cells[rCnt, 15].Value.ToString());
 
                     rowList.Add(field1);
                     rowList.Add(field2);
@@ -753,9 +757,11 @@ namespace ClassLibrary8
                     rowList.Add(field8);
                     rowList.Add(field9);
                     rowList.Add(field10);
-
                     rowList.Add(field11);
                     rowList.Add(field12);
+                    rowList.Add(field13);
+                    rowList.Add(field14);
+                    rowList.Add(field15);
 
                     string[] row = rowList.ToArray();
 
@@ -765,7 +771,6 @@ namespace ClassLibrary8
                 {
                     MessageBox.Show(ex.Message);
                 }
-
             }
 
             xlWorkBook.Close(true, null, null);
@@ -774,7 +779,11 @@ namespace ClassLibrary8
             Marshal.ReleaseComObject(xlWorkSheet);
             Marshal.ReleaseComObject(xlWorkBook);
             Marshal.ReleaseComObject(xlApp);
-
+            }
+            catch (Exception ex)
+            {
+                String s = ex.Message;
+            }
 
         }
 
