@@ -885,5 +885,10 @@ namespace ClassLibrary8
             string filePath = @"C:\temp\MyMessage.eml";
             Process.Start(filePath);
         }
+
+        private void contentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

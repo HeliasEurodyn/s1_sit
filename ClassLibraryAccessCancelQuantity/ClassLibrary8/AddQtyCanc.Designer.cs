@@ -210,6 +210,7 @@
             this.contentDataGridView.Name = "contentDataGridView";
             this.contentDataGridView.Size = new System.Drawing.Size(951, 561);
             this.contentDataGridView.TabIndex = 36;
+            this.contentDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contentDataGridView_CellContentClick);
             // 
             // Column1
             // 
